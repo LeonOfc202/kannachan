@@ -1,25 +1,37 @@
-//Credits Jangan Dihapus
-//Thanks For KannaChan & Papah-Chan
-import fetch from 'node-fetch'
-let handler = async(m, { conn, text, usedPrefix, command }) => {
-let pp = await conn.profilePictureUrl(m.chat).catch(_ => null)
-
-let str = `*https://chat.whatsapp.com/CF4jm8T9FVx5MnD037B1nNz*`
-let wibu = `https://api.zacros.my.id/randomimg/waifu` 
-let thumb = await(await fetch(wibu)).buffer()
-conn.sendButtonDoc(m.chat, str, wm,'Thankyou','Bilek', m, { contextInfo: { externalAdReply: { showAdAttribution: true,
-    mediaUrl: "https://Instagram.com/cekilgans",
-    mediaType: "VIDEO",
-    description: "https://www.instagram.com/reel/Ce_bngYBkEA/?igshid=YmMyMTA2M2Y=", 
-    title: 'Yui-Chan MultiDevice',
-    body: wm,
-    thumbnail: thumb,
-    sourceUrl: sgc
-  }
-  } }) 
-          }
-handler.help = ['source code']
+let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
+	
+	// ‼️ NOTE: Link script Jangan diubah, dihapus atau diganti
+let text = `❏ *📮 Script Multi Device*
+│• *Script :* 
+│↳ Private
+│• *Node_Modules:*
+│↳ Private
+│• *Base :* 
+│↳ Private
+┗──────────═┅═──────────
+📍 *N o t e :* 
+• Jangan lupa minta izin owner sebelum menggunakan scriptnya kak!
+• Jangan Lupa kasih star, follow & kasih credit
+• Dilarang menjual Script Ini!
+• Jika menemukan bug di script, harap lapor owner
+• Dilarang reupload sc, Hanya boleh fork
+`
+const templateButtons = [
+    {index: 1, urlButton: {displayText: 'My Github', url: sgh}},
+    {index: 2, urlButton: {displayText: 'Group Official', url: sgc}},
+    {index: 3, quickReplyButton: {displayText: 'Owner', id: '.owner'}},
+    {index: 4, quickReplyButton: {displayText: 'Donasi', id: '.donasi'}},
+]
+let tm = {
+text: text,
+footer: global.wm,
+templateButtons: templateButtons,
+image: thumb
+}
+conn.sendMessage(m.chat, tm, m)
+}
+handler.help = ['sc']
 handler.tags = ['info']
-handler.command =  /^(script|sc)$/i
+handler.command = /^(s(ourcode|c))$/i
 
 export default handler
